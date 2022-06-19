@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "captcha": "node puppeteer/captcha.js"
+    "captcha": "node puppeteer/captcha.js",
+    "detect": "node puppeteer/detect.js"
   },
   "keywords": [],
   "author": "",
