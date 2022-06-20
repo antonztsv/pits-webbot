@@ -3,7 +3,7 @@ const puppeteer = require("puppeteer-extra");
 
 // puppeteer.use(StealthPlugin());
 
-puppeteer.launch({ headless: true }).then(async (browser) => {
+puppeteer.launch({ headless: false }).then(async (browser) => {
   const page = await browser.newPage();
 
   //   await page.goto("https://abrahamjuliot.github.io/creepjs/", {
@@ -14,12 +14,13 @@ puppeteer.launch({ headless: true }).then(async (browser) => {
   //     waitUntil: "load",
   //   });
 
-  await page.goto("http://localhost:3000/", {
+  await page.goto("https://arh.antoinevastel.com/bots/areyouheadless", {
     waitUntil: "load",
   });
 
-  await page.waitForTimeout(5000);
-  await page.screenshot({ path: "creepjs2.png", fullPage: true });
+  await page.waitForTimeout(10000);
+
+  await page.screenshot({ path: "headless.png", fullPage: true });
 
   //
   await page.waitForTimeout(5000);
