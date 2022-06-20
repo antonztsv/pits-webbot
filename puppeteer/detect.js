@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer-extra");
-// const StealthPlugin = require("puppeteer-extra-plugin-stealth");
+const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 
-// puppeteer.use(StealthPlugin());
+puppeteer.use(StealthPlugin());
 
 puppeteer.launch({ headless: false }).then(async (browser) => {
   const page = await browser.newPage();
@@ -14,13 +14,13 @@ puppeteer.launch({ headless: false }).then(async (browser) => {
   //     waitUntil: "load",
   //   });
 
-  await page.goto("https://arh.antoinevastel.com/bots/areyouheadless", {
+  await page.goto("https://pits-webbots-fullstack.herokuapp.com/", {
     waitUntil: "load",
   });
 
-  await page.waitForTimeout(10000);
+  await page.waitForTimeout(5000);
 
-  await page.screenshot({ path: "headless.png", fullPage: true });
+  await page.screenshot({ path: "test.png", fullPage: true });
 
   //
   await page.waitForTimeout(5000);

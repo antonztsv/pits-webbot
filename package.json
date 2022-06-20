@@ -5,16 +5,18 @@
   "main": "app.js",
   "scripts": {
     "captcha": "node puppeteer/captcha.js",
-    "detect": "node puppeteer/detect.js"
+    "detect": "node puppeteer/detect.js",
+    "behavior": "node puppeteer/behavior.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@extra/humanize": "^4.2.2-next.616",
     "dotenv": "^16.0.1",
     "playwright": "^1.22.2",
     "puppeteer": "^14.4.1",
-    "puppeteer-extra": "^3.2.3",
+    "puppeteer-extra": "^3.3.0",
     "puppeteer-extra-plugin-recaptcha": "^3.5.0",
     "puppeteer-extra-plugin-stealth": "^2.9.0"
   }
