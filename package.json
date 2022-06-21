@@ -6,13 +6,15 @@
   "scripts": {
     "captcha": "node puppeteer/captcha.js",
     "detect": "node puppeteer/detect.js",
-    "behavior": "node puppeteer/behavior.js"
+    "nodetect": "node puppeteer/nodetect.js",
+    "badbehavior": "node puppeteer/badbehavior.js",
+    "goodbehavior": "node puppeteer/goodbehavior.js",
+    "noprotection": "node puppeteer/noprotection.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@extra/humanize": "^4.2.2-next.616",
     "dotenv": "^16.0.1",
     "playwright": "^1.22.2",
     "puppeteer": "^14.4.1",

@@ -3,6 +3,13 @@ const puppeteer = require("puppeteer-extra");
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 const RecaptchaPlugin = require("puppeteer-extra-plugin-recaptcha");
 
+// reCAPTCHAs (and hCaptchas) use a per-site sitekey.
+// Interestingly enough the response token after solving a challenge
+// is(currently) not tied to a specific session or IP and can be
+// passed on to others(until they expire).This is how the external
+// solutions provider work: They're being given a sitekey and URL,
+// solve the challenge and respond with a response token.
+
 puppeteer.use(StealthPlugin());
 puppeteer.use(
   RecaptchaPlugin({
@@ -20,28 +27,22 @@ puppeteer.launch({ headless: false }).then(async (browser) => {
     waitUntil: "load",
   });
 
-  //
+  await page.waitForTimeout(5000);
+
   const link = await page.$("a[href$='/tickets/captcha']");
   await link.click();
 
   const firstname = "Anton";
   const lastname = "Zaitsev";
   const email = "anton@zaitsev.com";
-  const count = "1";
 
-  await page.type("input[name='firstName']", firstname, { delay: 150 });
+  await page.type("input[name='firstName']", firstname, { delay: 50 });
 
-  await page.type("input[name='lastName']", lastname, { delay: 150 });
+  await page.type("input[name='lastName']", lastname, { delay: 50 });
 
-  await page.type("input[name='mail']", email, { delay: 150 });
+  await page.type("input[name='mail']", email, { delay: 50 });
 
-  // const amountInput = await page.$("input[name='amount']");
-  // await page.focus(amountInput);
-  // await page.keyboard.press("ArrowRight");
-  // await page.keyboard.press("Backspace");
-  // await page.type("input[name='amount']", count, { delay: 5 });
-
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(5000);
 
   await page.solveRecaptchas();
 
@@ -53,5 +54,5 @@ puppeteer.launch({ headless: false }).then(async (browser) => {
 
   //
   await page.waitForTimeout(10000);
-  await browser.close(); //close the browser once everything is done
+  await browser.close();
 });
