@@ -17,11 +17,6 @@ puppeteer
       waitUntil: "load",
     });
 
-    await page.waitForTimeout(5000);
-
-    const link = await page.$("a[href$='/tickets/noprotection']");
-    await link.click();
-
     await page.waitForTimeout(10000);
     await browser.close();
   });
