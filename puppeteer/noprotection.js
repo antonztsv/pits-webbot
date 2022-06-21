@@ -10,12 +10,12 @@ puppeteer.launch({ headless: false }).then(async (browser) => {
   const lastname = "Zaitsev";
   const email = "anton@zaitsev.com";
 
-  for (let i = 0; i < 10; i++) {
+  await page.waitForTimeout(5000);
+
+  for (let i = 0; i < 5; i++) {
     await page.goto("https://pits-webbots-fullstack.herokuapp.com/", {
       waitUntil: "load",
     });
-
-    await page.waitForTimeout(5000);
 
     const link = await page.$("a[href$='/tickets/noprotection']");
     await link.click();
@@ -26,7 +26,7 @@ puppeteer.launch({ headless: false }).then(async (browser) => {
 
     await page.type("input[name='mail']", email, { delay: 5 });
 
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(100);
 
     await Promise.all([
       page.waitForNavigation(),
