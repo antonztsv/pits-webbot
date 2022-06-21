@@ -12,29 +12,29 @@ puppeteer.launch({ headless: false }).then(async (browser) => {
 
   await page.waitForTimeout(5000);
 
-  for (let i = 0; i < 5; i++) {
-    await page.goto("https://pits-webbots-fullstack.herokuapp.com/", {
-      waitUntil: "load",
-    });
+  await page.goto("https://pits-webbots-fullstack.herokuapp.com/", {
+    waitUntil: "load",
+  });
 
-    const link = await page.$("a[href$='/tickets/noprotection']");
-    await link.click();
+  await page.waitForTimeout(5000);
 
-    await page.type("input[name='firstName']", firstname, { delay: 5 });
+  const link = await page.$("a[href$='/tickets/noprotection']");
+  await link.click();
 
-    await page.type("input[name='lastName']", lastname, { delay: 5 });
+  await page.type("input[name='firstName']", firstname, { delay: 150 });
 
-    await page.type("input[name='mail']", email, { delay: 5 });
+  await page.type("input[name='lastName']", lastname, { delay: 150 });
 
-    await page.waitForTimeout(100);
+  await page.type("input[name='mail']", email, { delay: 150 });
 
-    await Promise.all([
-      page.waitForNavigation(),
-      page.click("input[type='submit']"),
-    ]);
+  await page.waitForTimeout(2000);
 
-    await page.waitForTimeout(500);
-  }
+  await Promise.all([
+    page.waitForNavigation(),
+    page.click("input[type='submit']"),
+  ]);
+
+  await page.waitForTimeout(5000);
 
   //
   await page.waitForTimeout(5000);
