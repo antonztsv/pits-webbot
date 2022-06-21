@@ -42,7 +42,7 @@ puppeteer.launch({ headless: false }).then(async (browser) => {
 
   await page.type("input[name='mail']", email, { delay: 50 });
 
-  await page.waitForTimeout(5000);
+  await page.waitForTimeout(7000);
 
   await page.solveRecaptchas();
 
