@@ -10,8 +10,6 @@ puppeteer.launch({ headless: false }).then(async (browser) => {
   const lastname = "Zaitsev";
   const email = "anton@zaitsev.com";
 
-  await page.waitForTimeout(5000);
-
   await page.goto("https://pits-webbots-fullstack.herokuapp.com/", {
     waitUntil: "load",
   });
